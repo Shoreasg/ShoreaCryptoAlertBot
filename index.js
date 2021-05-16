@@ -8,7 +8,8 @@ const binanceClient = Binance.default({
     apiKey: process.env.BINANCE_API_KEY,
     apiSecret: process.env.BINANCE_API_SECRETKEY,
 })
-const Telebot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: true }); //from github.com/yagop/node-telegram-bot-api 
+const Telebot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: true })
+//from github.com/yagop/node-telegram-bot-api
 
 Telebot.onText(/\/Type of Coin: (.+)/, (msg, match) => {
     // 'msg' is the received Message from Telegram
