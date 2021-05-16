@@ -2,7 +2,7 @@ import Binance from 'binance-api-node'
 import dotenv from 'dotenv'
 import { formatMoney } from './utils/money.js'
 
-otenv.config()
+dotenv.config()
 
 const binanceClient = Binance.default({
     apiKey: process.env.BINANCE_API_KEY,
