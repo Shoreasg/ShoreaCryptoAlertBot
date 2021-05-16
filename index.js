@@ -13,7 +13,7 @@ const binanceClient = Binance.default({
 const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: true })
 //from github.com/yagop/node-telegram-bot-api
 
-bot.onText(/\/Coin: (.+)/, (msg, match) => {
+bot.onText(/\/Coin (.+)/, (msg, match) => {
     // 'msg' is the received Message from Telegram
     // 'match' is the result of executing the regexp above on the text content
     // of the message
@@ -23,7 +23,8 @@ bot.onText(/\/Coin: (.+)/, (msg, match) => {
 
     // tell user received message, retriving data.
     bot.sendMessage(chatId, "Retriving data");
-    const [CryptoCoin1, CryptoCoin2 = 'USDT'] = data[1].split("");
+
+    const [msg, CryptoCoin2 = 'USDT'] = data[1].split("");
 
     binanceClient
         .avgPrice({ symbol: `${CryptoCoin1}${CryptoCoin2}` }) // example, { symbol: "BTCUSTD" }
