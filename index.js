@@ -13,7 +13,7 @@ const binanceClient = Binance.default({
 
 
 if (process.env.NODE_ENV === 'production') {
-    const bot = new Bot(process.env.TELEGRAMM_BOT_TOKEN);
+    const bot = new Bot(process.env.TELEGRAM_BOT_TOKEN);
     bot.setWebHook(process.env.HEROKU_URL + bot.token);
 
     bot.onText(/\/Coin (.+)/, (msg, match) => {
@@ -51,7 +51,7 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 else {
-    bot = new Bot(process.env.TELEGRAMM_BOT_TOKEN, { polling: true });
+    bot = new Bot(process.env.TELEGRAM_BOT_TOKEN, { polling: true });
 
     bot.onText(/\/Coin (.+)/, (msg, match) => {
         // 'msg' is the received Message from Telegram
