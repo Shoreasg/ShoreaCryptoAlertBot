@@ -2,6 +2,7 @@ import Binance from 'binance-api-node'
 import TelegramBot from 'node-telegram-bot-api'
 import dotenv from 'dotenv'
 import { formatMoney } from './Utils/money.js'
+dotenv.config()
 
 const binanceClient = Binance.default({
     apiKey: process.env.BINANCE_API_KEY,
@@ -11,7 +12,7 @@ const binanceClient = Binance.default({
 const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: true })
 //from github.com/yagop/node-telegram-bot-api
 
-bot.onText(/\/Coin (.+)/, (msg, match) => {
+bot.onText(/\/coin (.+)/, (msg, match) => {
     // 'msg' is the received Message from Telegram
     // 'match' is the result of executing the regexp above on the text content
     // of the message
