@@ -33,7 +33,7 @@ bot.onText(/\/Coin (.+)/, (msg, match) => {
     binanceClient
         .avgPrice({ symbol: `${CryptoCoin1}${CryptoCoin2}` }) // example, { symbol: "BTCUSTD" }
         .then((avgPrice) => {
-            bot.sendMessage(chatId, formatMoney(avgPrice['price']));
+            bot.sendMessage(chatId, `The Price for ${CryptoCoin1}${CryptoCoin2}: ${formatMoney(avgPrice['price'])}`);
         })
         .catch((error) =>
             bot.sendMessage(chatId, `Error retrieving the price for ${CryptoCoin1}${CryptoCoin2}: ${error}`));
