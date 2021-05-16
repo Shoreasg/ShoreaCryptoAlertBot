@@ -25,5 +25,6 @@
     "binance-api-node": "^0.10.43",
     "dotenv": "^9.0.2",
     "node-telegram-bot-api": "^0.53.0"
-  }
+  },
+  "”type”": "“module”"
 }
