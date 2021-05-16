@@ -1,7 +1,7 @@
 import Binance from 'binance-api-node'
 import Bot from 'node-telegram-bot-api'
 import dotenv from 'dotenv'
-import { formatMoney } from './utils/money.js'
+import { formatMoney } from './Utils/money.js'
 
 dotenv.config()
 
