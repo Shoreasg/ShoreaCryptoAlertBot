@@ -48,6 +48,7 @@ if (process.env.NODE_ENV === 'production') {
             default:
                 break;
         }
+    });
 }
 else {
     bot = new Bot(process.env.TELEGRAMM_BOT_TOKEN, { polling: true });
@@ -84,10 +85,10 @@ else {
             default:
                 break;
         }
-}
+    });
 
 
 
 
-});
+};
 
