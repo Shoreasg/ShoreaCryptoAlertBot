@@ -15,34 +15,56 @@ const binanceClient = Binance.default({
 if (process.env.NODE_ENV === 'production') {
     const bot = new Bot(process.env.TELEGRAMM_BOT_TOKEN);
     bot.setWebHook(process.env.HEROKU_URL + bot.token);
+
+    bot.onText(/\/Coin (.+)/, (msg, match) => {
+        // 'msg' is the received Message from Telegram
+        // 'match' is the result of executing the regexp above on the text content
+        // of the message
+
+        const chatId = msg.chat.id;
+
+        // tell user received message, retriving data.
+        bot.sendMessage(chatId, "Retriving data.....");
+
+        const CryptoCoin1 = match[1]
+        const CryptoCoin2 = 'USDT'
+
+        binanceClient
+            .avgPrice({ symbol: `${CryptoCoin1}${CryptoCoin2}` }) // example, { symbol: "BTCUSTD" }
+            .then((avgPrice) => {
+                bot.sendMessage(chatId, `The Price for ${CryptoCoin1}${CryptoCoin2}: ${formatMoney(avgPrice['price'])}`);
+            })
+            .catch((error) =>
+                bot.sendMessage(chatId, `Error retrieving the price for ${CryptoCoin1}${CryptoCoin2}: ${error}`));
+
+    });
 }
 else {
     bot = new Bot(process.env.TELEGRAMM_BOT_TOKEN, { polling: true });
+
+    bot.onText(/\/Coin (.+)/, (msg, match) => {
+        // 'msg' is the received Message from Telegram
+        // 'match' is the result of executing the regexp above on the text content
+        // of the message
+
+        const chatId = msg.chat.id;
+
+        // tell user received message, retriving data.
+        bot.sendMessage(chatId, "Retriving data.....");
+
+        const CryptoCoin1 = match[1]
+        const CryptoCoin2 = 'USDT'
+
+        binanceClient
+            .avgPrice({ symbol: `${CryptoCoin1}${CryptoCoin2}` }) // example, { symbol: "BTCUSTD" }
+            .then((avgPrice) => {
+                bot.sendMessage(chatId, `The Price for ${CryptoCoin1}${CryptoCoin2}: ${formatMoney(avgPrice['price'])}`);
+            })
+            .catch((error) =>
+                bot.sendMessage(chatId, `Error retrieving the price for ${CryptoCoin1}${CryptoCoin2}: ${error}`));
+
+    });
 }
-//from github.com/yagop/node-telegram-bot-api
-
-bot.onText(/\/Coin (.+)/, (msg, match) => {
-    // 'msg' is the received Message from Telegram
-    // 'match' is the result of executing the regexp above on the text content
-    // of the message
-
-    const chatId = msg.chat.id;
-
-    // tell user received message, retriving data.
-    bot.sendMessage(chatId, "Retriving data.....");
-
-    const CryptoCoin1 = match[1]
-    const CryptoCoin2 = 'USDT'
-
-    binanceClient
-        .avgPrice({ symbol: `${CryptoCoin1}${CryptoCoin2}` }) // example, { symbol: "BTCUSTD" }
-        .then((avgPrice) => {
-            bot.sendMessage(chatId, `The Price for ${CryptoCoin1}${CryptoCoin2}: ${formatMoney(avgPrice['price'])}`);
-        })
-        .catch((error) =>
-            bot.sendMessage(chatId, `Error retrieving the price for ${CryptoCoin1}${CryptoCoin2}: ${error}`));
-        
-});
 
 bot.on('message', (msg) => {
     const chatId = msg.chat.id;
