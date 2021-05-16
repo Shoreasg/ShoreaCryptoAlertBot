@@ -11,9 +11,9 @@ const binanceClient = Binance.default({
     apiSecret: process.env.BINANCE_API_SECRETKEY,
 })
 
-const bot;
+
 if (process.env.NODE_ENV === 'production') {
-    bot = new Bot(process.env.TELEGRAMM_BOT_TOKEN);
+    const bot = new Bot(process.env.TELEGRAMM_BOT_TOKEN);
     bot.setWebHook(process.env.HEROKU_URL + bot.token);
 }
 else {
