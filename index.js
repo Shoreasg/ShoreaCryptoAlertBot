@@ -8,12 +8,21 @@ import http from "http";
 http.createServer().listen(process.env.PORT);
 dotenv.config()
 
+
 const binanceClient = Binance.default({
     apiKey: process.env.BINANCE_API_KEY,
     apiSecret: process.env.BINANCE_API_SECRETKEY,
 })
 
-const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: true })
+const bot;
+if (process.env.NODE_ENV === 'production') {
+    bot = new Bot(token);
+    bot.setWebHook(process.env.HEROKU_URL + bot.token);
+}
+else {
+    bot = new Bot(token, { polling: true });
+}
+const bot
 //from github.com/yagop/node-telegram-bot-api
 
 bot.onText(/\/Coin (.+)/, (msg, match) => {
