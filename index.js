@@ -36,7 +36,7 @@ bot.onText(/\/Coin (.+)/, (msg, match) => {
             console.log(formatMoney(avgPrice['price']))
         })
         .catch((error) =>
-            console.log(`Error retrieving the price for ${cryptoToken1}${cryptoToken2}: ${error}`)
+            console.log(`Error retrieving the price for ${CryptoCoin1}${CryptoCoin2}: ${error}`)
         )
 });
 
