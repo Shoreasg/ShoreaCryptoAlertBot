@@ -3,8 +3,7 @@ import TelegramBot from 'node-telegram-bot-api'
 import dotenv from 'dotenv'
 import { formatMoney } from './utils/money.js'
 
-import http from "http";
-http.createServer().listen(process.env.PORT);
+
 
 dotenv.config()
 
