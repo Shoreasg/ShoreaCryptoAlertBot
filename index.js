@@ -14,7 +14,7 @@ const binanceClient = Binance.default({
 
 if (process.env.NODE_ENV === 'production') {
     const bot = new Bot(process.env.TELEGRAM_BOT_TOKEN);
-    bot.setWebHook(process.env.HEROKU_URL + bot.token);
+    bot.setWebHook(process.env.HEROKU_URL + process.env.TELEGRAM_BOT_TOKEN);
 
     bot.onText(/\/Coin (.+)/, (msg, match) => {
         // 'msg' is the received Message from Telegram
