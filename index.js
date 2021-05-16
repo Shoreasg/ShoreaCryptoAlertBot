@@ -8,7 +8,8 @@ const binanceClient = Binance.default({
     apiKey: process.env.BINANCE_API_KEY,
     apiSecret: process.env.BINANCE_API_SECRETKEY,
 })
-const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: true });
+
+const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: true })
 //from github.com/yagop/node-telegram-bot-api
 
 Telebot.onText(/\/Type of Coin: (.+)/, (msg, match) => {
@@ -21,9 +22,8 @@ Telebot.onText(/\/Type of Coin: (.+)/, (msg, match) => {
 
     // tell user received message, retriving data.
     bot.sendMessage(chatId, "Retriving data");
+    const [CryptoCoin1, CryptoCoin2 = 'USDT'] = data[1].split("");
 
-    const CryptoCoin1 = 'ADA'
-    const CryptoCoin2 = 'USDT'
     binanceClient
         .avgPrice({ symbol: `${CryptoCoin1}${CryptoCoin2}` }) // example, { symbol: "BTCUSTD" }
         .then((avgPrice) => {
@@ -34,5 +34,18 @@ Telebot.onText(/\/Type of Coin: (.+)/, (msg, match) => {
         )
 });
 
+bot.on('message', (msg) => {
+    const chatId = msg.chat.id;
+
+    switch (msg.text) {
+        case "/start":
+            bot.sendMessage(chatId, "Hi there! I am Shorea Crypto Alert Bot");
+            break;
+        default:
+            break;
+    }
+
+
+});
 
 
