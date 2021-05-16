@@ -4,13 +4,12 @@ import { formatMoney } from './utils/money.js'
 
 dotenv.config()
 
-// API keys can be generated here https://www.binance.com/en/my/settings/api-management
 const binanceClient = Binance.default({
     apiKey: process.env.BINANCE_API_KEY,
     apiSecret: process.env.BINANCE_API_SECRET,
 })
 
-const cryptoToken1 = 'BTC'
+const cryptoToken1 = 'ADA'
 const cryptoToken2 = 'USDT'
 
 binanceClient
