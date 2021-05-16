@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === 'production') {
 else {
     bot = new Bot(token, { polling: true });
 }
-const bot
+const bot;
 //from github.com/yagop/node-telegram-bot-api
 
 bot.onText(/\/Coin (.+)/, (msg, match) => {
