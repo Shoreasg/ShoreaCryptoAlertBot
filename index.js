@@ -22,12 +22,12 @@ bot.onText(/\/Coin (.+)/, (msg, match) => {
     // of the message
 
     const chatId = msg.chat.id;
-
+    const UserResponse = match[1];
 
     // tell user received message, retriving data.
     bot.sendMessage(chatId, "Retriving data");
 
-    const CryptoCoin1 = 'msg'
+    const CryptoCoin1 = UserResponse
     const CryptoCoin2 = 'USDT'
 
     binanceClient
