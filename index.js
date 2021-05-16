@@ -38,6 +38,16 @@ if (process.env.NODE_ENV === 'production') {
                 bot.sendMessage(chatId, `Error retrieving the price for ${CryptoCoin1}${CryptoCoin2}: ${error}`));
 
     });
+    bot.on('message', (msg) => {
+        const chatId = msg.chat.id;
+
+        switch (msg.text) {
+            case "/start":
+                bot.sendMessage(chatId, "Hi there! I am Shorea Crypto Alert Bot");
+                break;
+            default:
+                break;
+        }
 }
 else {
     bot = new Bot(process.env.TELEGRAMM_BOT_TOKEN, { polling: true });
@@ -64,18 +74,19 @@ else {
                 bot.sendMessage(chatId, `Error retrieving the price for ${CryptoCoin1}${CryptoCoin2}: ${error}`));
 
     });
+    bot.on('message', (msg) => {
+        const chatId = msg.chat.id;
+
+        switch (msg.text) {
+            case "/start":
+                bot.sendMessage(chatId, "Hi there! I am Shorea Crypto Alert Bot");
+                break;
+            default:
+                break;
+        }
 }
 
-bot.on('message', (msg) => {
-    const chatId = msg.chat.id;
 
-    switch (msg.text) {
-        case "/start":
-            bot.sendMessage(chatId, "Hi there! I am Shorea Crypto Alert Bot");
-            break;
-        default:
-            break;
-    }
 
 
 });
