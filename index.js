@@ -2,18 +2,19 @@ import Binance from 'binance-api-node'
 import dotenv from 'dotenv'
 import { formatMoney } from './utils/money.js'
 
-dotenv.config()
+otenv.config()
 
 const binanceClient = Binance.default({
     apiKey: process.env.BINANCE_API_KEY,
-    apiSecret: process.env.BINANCE_API_SECRET,
+    apiSecret: process.env.BINANCE_API_SECRETKEY,
 })
+const Telebot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: true })
 
-const cryptoToken1 = 'ADA'
-const cryptoToken2 = 'USDT'
+const CryptoCoin1 = 'ADA'
+const CryptoCoin2 = 'USDT'
 
 binanceClient
-    .avgPrice({ symbol: `${cryptoToken1}${cryptoToken2}` }) // example, { symbol: "BTCUSTD" }
+    .avgPrice({ symbol: `${CryptoCoin1}${CryptoCoin2}` }) // example, { symbol: "BTCUSTD" }
     .then((avgPrice) => {
         console.log(formatMoney(avgPrice['price']))
     })
