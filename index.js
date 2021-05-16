@@ -13,11 +13,11 @@ const binanceClient = Binance.default({
 
 
 if (process.env.NODE_ENV === 'production') {
-    bot = new Bot(token);
+    bot = new Bot(TELEGRAM_BOT_TOKEN);
     bot.setWebHook(process.env.HEROKU_URL + bot.token);
 }
 else {
-    bot = new Bot(token, { polling: true });
+    bot = new Bot(TELEGRAM_BOT_TOKEN, { polling: true });
 }
 //from github.com/yagop/node-telegram-bot-api
 
