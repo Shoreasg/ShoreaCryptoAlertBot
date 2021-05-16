@@ -1,24 +1,14 @@
 import Binance from 'binance-api-node'
-import Bot from 'node-telegram-bot-api'
+import TelegramBot from 'node-telegram-bot-api'
 import dotenv from 'dotenv'
 import { formatMoney } from './utils/money.js'
-
-dotenv.config()
-
 
 const binanceClient = Binance.default({
     apiKey: process.env.BINANCE_API_KEY,
     apiSecret: process.env.BINANCE_API_SECRETKEY,
 })
 
-
-if (process.env.NODE_ENV === 'production') {
-    const bot = new Bot(process.env.TELEGRAMM_BOT_TOKEN);
-    bot.setWebHook(process.env.HEROKU_URL + bot.token);
-}
-else {
-    bot = new Bot(process.env.TELEGRAMM_BOT_TOKEN, { polling: true });
-}
+const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: true })
 //from github.com/yagop/node-telegram-bot-api
 
 bot.onText(/\/Coin (.+)/, (msg, match) => {
