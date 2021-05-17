@@ -14,25 +14,17 @@ const binanceClient = Binance.default({
 const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: true })
 //from github.com/yagop/node-telegram-bot-api
 
-bot.onText(/\/coin (.+)/, (msg1, data1) => {
+bot.onText(/\/coin (.+)/, (msg, match) => {
     // 'msg' is the received Message from Telegram
     // 'match' is the result of executing the regexp above on the text content
     // of the message
 
-    const chatId1 = msg1.chat.id;
+    const chatId = msg.chat.id;
 
     // tell user received message, retriving data.
-    bot.sendMessage(chatId1, "Please enter the pair that you would like to pair with.");
+    bot.sendMessage(chatId, "Retriving data.....");
 
-    bot.on('message', (msg2) => {
-        const chatId2 = msg2.chat.id;
-
-        bot.sendMessage(chatId2, "Retriving data.....");
-
-
-    });
-
-    const [CryptoCoin1 , CryptoCoin2 ="USDT"] = match[1].split(" ")
+    const [CryptoCoin1, CryptoCoin2 = "USDT"] = match[1].split{}
 
     binanceClient
         .avgPrice({ symbol: `${CryptoCoin1}${CryptoCoin2}` }) // example, { symbol: "BTCUSTD" }
@@ -41,7 +33,6 @@ bot.onText(/\/coin (.+)/, (msg1, data1) => {
         })
         .catch((error) =>
             bot.sendMessage(chatId, `Error retrieving the price for ${CryptoCoin1}${CryptoCoin2}: ${error}`));
-   
         
 });
 
@@ -50,7 +41,7 @@ bot.on('message', (msg) => {
 
     switch (msg.text) {
         case "/start":
-            bot.sendMessage(chatId, "Hi there! I am Shorea Crypto Alert Bot, Please enter the Coin that you would like to check");
+            bot.sendMessage(chatId, "Hi there! I am Shorea Crypto Alert Bot");
             break;
         default:
             break;
