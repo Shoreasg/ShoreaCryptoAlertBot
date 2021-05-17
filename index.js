@@ -14,7 +14,7 @@ const binanceClient = Binance.default({
 const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: true })
 //from github.com/yagop/node-telegram-bot-api
 
-bot.onText(/\/coin (.+)/, (msg1, data1) => {
+bot.onText(/\/coin (.+)/, (msg1,data1) => {
     // 'msg' is the received Message from Telegram
     // 'match' is the result of executing the regexp above on the text content
     // of the message
