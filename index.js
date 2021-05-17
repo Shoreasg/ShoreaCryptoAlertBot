@@ -1,7 +1,7 @@
 import Binance from 'binance-api-node'
 import TelegramBot from 'node-telegram-bot-api'
 import dotenv from 'dotenv'
-import { formatMoney } from './Utils/money.js'
+import {formatMoney } from './Utils/money.js'
 dotenv.config()
 
 
@@ -20,7 +20,7 @@ bot.onText(/\/coin (.+)/, (msg1,data1) => {
     // of the message
 
     const chatId1 = msg1.chat.id;
-    const [CryptoCoin1] = data1;
+    const CryptoCoin1 = data1[1];
 
     console.log(CryptoCoin1)
     // tell user received message, retriving data.
