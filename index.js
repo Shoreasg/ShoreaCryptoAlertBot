@@ -46,8 +46,8 @@ bot.onText(/\/coin (.+)/, (msg1,data1) => {
        
     });
 
-    CryptoCoin1=[]
-    Cryptocoin2 = []
+    CryptoCoin1.length =0
+    Cryptocoin2.length=0
     
 
 });
