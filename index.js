@@ -24,12 +24,12 @@ bot.onText(/\/coin (.+)/, (msg, match) => {
     // tell user received message, retriving data.
     bot.sendMessage(chatId, "Retriving data.....");
 
-    const [CryptoCoin1, CryptoCoin2 = "USDT"] = match[1].split(" ") // match[1] can be single token (i.e. "BTC") or pair ("ETH BTC")
+    const [CryptoCoin1, CryptoCoin2 = "USDT"] = match[1].split(" ") // match[1] can be single token ("ADA") or pair ("ADA BTC") If single token, default pair would be USDT
 
     binanceClient
-        .avgPrice({ symbol: `${CryptoCoin1}${CryptoCoin2}`.toUpperCase() })
+        .avgPrice({ symbol: `${CryptoCoin1}${CryptoCoin2}`.toUpperCase() })//if user enter ada, convert it to caps so that Binance API can detect
         .then((avgPrice) => {
-            bot.sendMessage(chatId, `The Price for ${CryptoCoin1.toUpperCase()}${CryptoCoin2.toUpperCase()}: <code>${(avgPrice['price'])} ${CryptoCoin2.toUpperCase() }</code>`, {parse_mode:"HTML"});
+            bot.sendMessage(chatId, `The Price for ${CryptoCoin1.toUpperCase()}${CryptoCoin2.toUpperCase()}: <code>${(avgPrice['price'])} ${CryptoCoin2.toUpperCase() }</code>`, {parse_mode:"HTML"});//used parse_mode because price appears as link when there is a decimal point on it
         })
         .catch((error) =>
             bot.sendMessage(chatId, `Error retrieving the price for ${CryptoCoin1}${CryptoCoin2} Please enter a coin that can be found on Binance`));
