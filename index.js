@@ -20,7 +20,7 @@ bot.onText(/\/coin (.+)/, (msg1,data1) => {
     // of the message
 
     const chatId1 = msg1.chat.id;
-    const CryptoCoin1 = new data1[1];
+    const CryptoCoin1 = data1[1];
 
 
 
@@ -43,10 +43,10 @@ bot.onText(/\/coin (.+)/, (msg1,data1) => {
 
 
         
-
+        Cryptocoin2=[]
     });
-   
-    
+
+    CryptoCoin1=[]
 
     
 
