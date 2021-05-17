@@ -20,29 +20,29 @@ bot.onText(/\/coin (.+)/, (msg1, data1) => {
     // of the message
 
     const chatId1 = msg1.chat.id;
-
+    const [CryptoCoin1] = data1[1];
     // tell user received message, retriving data.
     bot.sendMessage(chatId1, "Please enter the pair that you would like to pair with.");
 
-    bot.onText(/\/coin2 (.+)/, (msg2, data2 )=> {
+    bot.onText(/\/coin2 (.+)/, (msg2, data2)=> {
         const chatId2 = msg2.chat.id;
 
         bot.sendMessage(chatId2, "Retriving data.....");
+        const [CryptoCoin2] = data2[1];
 
-        
-
+        binanceClient
+            .avgPrice({ symbol: `${CryptoCoin1}${CryptoCoin2}` }) // example, { symbol: "BTCUSTD" }
+            .then((avgPrice) => {
+                bot.sendMessage(chatId2, `The Price for ${CryptoCoin1}${CryptoCoin2}: ${formatMoney(avgPrice['price'])}`);
+            })
+            .catch((error) =>
+                bot.sendMessage(chatId2, `Error retrieving the price for ${CryptoCoin1}${CryptoCoin2}: ${error}`));
+ 
        
     });
+    
 
-    const [CryptoCoin1, CryptoCoin2] = [data1[1], data2[1]]
-
-    binanceClient
-        .avgPrice({ symbol: `${CryptoCoin1}${CryptoCoin2}` }) // example, { symbol: "BTCUSTD" }
-        .then((avgPrice) => {
-            bot.sendMessage(chatId2, `The Price for ${CryptoCoin1}${CryptoCoin2}: ${formatMoney(avgPrice['price'])}`);
-        })
-        .catch((error) =>
-            bot.sendMessage(chatId2, `Error retrieving the price for ${CryptoCoin1}${CryptoCoin2}: ${error}`));
+    
 
 });
 
