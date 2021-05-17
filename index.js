@@ -29,7 +29,7 @@ bot.onText(/\/coin (.+)/, (msg1, data1) => {
 
         bot.sendMessage(chatId2, "Retriving data.....");
 
-        const [CryptoCoin1 = data1[1], CryptoCoin2 = data2[1]]
+        const [CryptoCoin1, CryptoCoin2] = [data1[1], data2[1]]
         binanceClient
             .avgPrice({ symbol: `${CryptoCoin1}${CryptoCoin2}` }) // example, { symbol: "BTCUSTD" }
             .then((avgPrice) => {
