@@ -29,7 +29,7 @@ bot.onText(/\/coin (.+)/, (msg, match) => {
     binanceClient
         .avgPrice({ symbol: `${CryptoCoin1}${CryptoCoin2}`.toUpperCase() })
         .then((avgPrice) => {
-            bot.sendMessage(chatId, `The Price for ${CryptoCoin1.toUpperCase()}${CryptoCoin2.toUpperCase()}: <code>${(avgPrice['price'])}${CryptoCoin2.toUpperCase() }</code>`, {parse_mode:"HTML"});
+            bot.sendMessage(chatId, `The Price for ${CryptoCoin1.toUpperCase()}${CryptoCoin2.toUpperCase()}: <code>${(avgPrice['price'])} ${CryptoCoin2.toUpperCase() }</code>`, {parse_mode:"HTML"});
         })
         .catch((error) =>
             bot.sendMessage(chatId, `Error retrieving the price for ${CryptoCoin1}${CryptoCoin2}: ${error}`));
