@@ -1,6 +1,11 @@
 import Binance from 'binance-api-node'
 import TelegramBot from 'node-telegram-bot-api'
 import dotenv from 'dotenv'
+
+
+import http from "http";
+http.createServer().listen(process.env.PORT);
+
 dotenv.config()
 
 

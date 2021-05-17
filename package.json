@@ -24,7 +24,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "Node index.js"
+    "start": "node index.js"
   },
   "type": "module",
   "version": "1.0.0"
