@@ -29,17 +29,20 @@ bot.onText(/\/coin (.+)/, (msg1, data1) => {
 
         bot.sendMessage(chatId2, "Retriving data.....");
 
-        const [CryptoCoin1, CryptoCoin2] = [data1[1], data2[1]]
-        binanceClient
-            .avgPrice({ symbol: `${CryptoCoin1}${CryptoCoin2}` }) // example, { symbol: "BTCUSTD" }
-            .then((avgPrice) => {
-                bot.sendMessage(chatId2, `The Price for ${CryptoCoin1}${CryptoCoin2}: ${formatMoney(avgPrice['price'])}`);
-            })
-            .catch((error) =>
-                bot.sendMessage(chatId2, `Error retrieving the price for ${CryptoCoin1}${CryptoCoin2}: ${error}`));
+        
+
+       
     });
 
-    
+    const [CryptoCoin1, CryptoCoin2] = [data1[1], data2[1]]
+
+    binanceClient
+        .avgPrice({ symbol: `${CryptoCoin1}${CryptoCoin2}` }) // example, { symbol: "BTCUSTD" }
+        .then((avgPrice) => {
+            bot.sendMessage(chatId2, `The Price for ${CryptoCoin1}${CryptoCoin2}: ${formatMoney(avgPrice['price'])}`);
+        })
+        .catch((error) =>
+            bot.sendMessage(chatId2, `Error retrieving the price for ${CryptoCoin1}${CryptoCoin2}: ${error}`));
 
 });
 
