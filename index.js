@@ -32,7 +32,7 @@ bot.onText(/\/coin (.+)/, (msg, match) => {
             bot.sendMessage(chatId, `The Price for ${CryptoCoin1.toUpperCase()}${CryptoCoin2.toUpperCase()}: <code>${(avgPrice['price'])} ${CryptoCoin2.toUpperCase() }</code>`, {parse_mode:"HTML"});
         })
         .catch((error) =>
-            bot.sendMessage(chatId, `Error retrieving the price for ${CryptoCoin1}${CryptoCoin2}: ${error}`));
+            bot.sendMessage(chatId, `Error retrieving the price for ${CryptoCoin1}${CryptoCoin2} Please enter a coin that can be found on Binance`));
         
 });
 
