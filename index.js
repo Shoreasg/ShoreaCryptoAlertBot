@@ -41,7 +41,7 @@ bot.on('message', (msg) => {
 
     switch (msg.text) {
         case "/start":
-            bot.sendMessage(chatId, "Hi there! I am Shorea Crypto Alert Bot, begin by typing command /coin. For Example /coin BTC will give you the price for BTCUSDT. You can also search the price of other pairing. For example /coin ADA BTC will give you the price of ADABTC");
+            bot.sendMessage(chatId, "Hi there! I am Shorea Crypto Alert Bot, begin by typing command /coin. For Example /coin BTC will give you the price for BTCUSDT. You can also search the price of other crypto pairing. For example /coin ADA BTC will give you the price of ADABTC");
             break;
         default:
             break;
