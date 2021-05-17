@@ -1,5 +1,5 @@
 # ShoreaCryptoAlertBot
-This repository is a small side project by me. As my friends and i are getting into crypto, we would want a bot in our group to check for the current Binance price
+This repository is a small side project by me. As my friends and i are getting into crypto, we would want a bot in our telegram group to check for the current Binance price for any Crypto token
 
 ## Things you need to open this project
 
