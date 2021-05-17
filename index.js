@@ -47,7 +47,6 @@ bot.on('message', (msg) => {
         case "/coin":
             bot.sendMessage(chatId, "Please type the coin that you are searching for. For Example, /coin BTC or /coin ADA BTC")
         default:
-            bot.sendMessage(chatId, 'Invalid Command')
             break;
     }
 
