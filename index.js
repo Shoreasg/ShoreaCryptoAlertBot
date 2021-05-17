@@ -24,7 +24,7 @@ bot.onText(/\/coin (.+)/, (msg, match) => {
     // tell user received message, retriving data.
     bot.sendMessage(chatId, "Retriving data.....");
 
-    const [CryptoCoin1, CryptoCoin2 = "USDT"] = match[1].split{}
+    const [CryptoCoin1, CryptoCoin2 = "USDT"] = match[1].split(" ")
 
     binanceClient
         .avgPrice({ symbol: `${CryptoCoin1}${CryptoCoin2}` }) // example, { symbol: "BTCUSTD" }
