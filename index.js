@@ -15,21 +15,19 @@ const binanceClient = Binance.default({
 //from github.com/yagop/node-telegram-bot-api
 const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: true })
 
-
-bot.onText(/\/coin (.+)/, (msg, match) => {//from github.com/yagop/node-telegram-bot-api
-    // 'msg' is the received Message from Telegram
-    // 'match' is the result of executing the regexp above on the text content
-    // of the message
+//from github.com/yagop/node-telegram-bot-api
+bot.onText(/\/coin (.+)/, (msg, match) => {
+ 
 
     const chatId = msg.chat.id;
 
     // tell user received message, retriving data.
     bot.sendMessage(chatId, "Retriving data.....");
 
-    const [CryptoCoin1, CryptoCoin2 = "USDT"] = match[1].split(" ") // match[1] can be single token (i.e. "BTC") or pair ("ETH BTC") If BTC, then
+    const [CryptoCoin1, CryptoCoin2 = "USDT"] = match[1].split(" ") // match[1] can be single token (i.e. "BTC") or pair ("ETH BTC")
 
     binanceClient
-        .avgPrice({ symbol: `${CryptoCoin1}${CryptoCoin2}`.toUpperCase() }) // example, { symbol: "BTCUSTD" }
+        .avgPrice({ symbol: `${CryptoCoin1}${CryptoCoin2}`.toUpperCase() })
         .then((avgPrice) => {
             bot.sendMessage(chatId, `The Price for ${CryptoCoin1.toUpperCase()}${CryptoCoin2.toUpperCase()}: ${(avgPrice['price'])}`);
         })
@@ -38,6 +36,7 @@ bot.onText(/\/coin (.+)/, (msg, match) => {//from github.com/yagop/node-telegram
         
 });
 
+//from github.com/yagop/node-telegram-bot-api
 bot.on('message', (msg) => {
     const chatId = msg.chat.id;
 
@@ -45,7 +44,10 @@ bot.on('message', (msg) => {
         case "/start":
             bot.sendMessage(chatId, "Hi there! I am Shorea Crypto Alert Bot, begin by typing command /coin. For Example /coin BTC will give you the price for BTCUSDT. You can also search the price of other crypto pairing. For example /coin ADA BTC will give you the price of ADABTC");
             break;
+        case "/coin":
+            bot.sendMessage(chatId, "Please type the coin that you are searching for. For Example, /coin BTC or /coin ADA BTC")
         default:
+            bot.sendMessage(chatId, 'Invalid Command')
             break;
     }
 
