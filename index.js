@@ -31,7 +31,7 @@ bot.onText(/\/coin (.+)/, (msg, match) => {//from github.com/yagop/node-telegram
     binanceClient
         .avgPrice({ symbol: `${CryptoCoin1}${CryptoCoin2}`.toUpperCase() }) // example, { symbol: "BTCUSTD" }
         .then((avgPrice) => {
-            bot.sendMessage(chatId, `$The Price for ${CryptoCoin1}${CryptoCoin2}`.toUpperCase()`: ${(avgPrice['price'])}`);
+            bot.sendMessage(chatId, `The Price for ${CryptoCoin1.toUpperCase()}${CryptoCoin2}: ${(avgPrice['price'])}`);
         })
         .catch((error) =>
             bot.sendMessage(chatId, `Error retrieving the price for ${CryptoCoin1}${CryptoCoin2}: ${error}`));
