@@ -26,7 +26,7 @@ bot.onText(/\/coin (.+)/, (msg1,data1) => {
 
     bot.onText(/\/coin2 (.+)/, (msg2, data2)=> {
         const chatId2 = msg2.chat.id;
-        const [CryptoCoin2] = data2[2];
+        const [CryptoCoin2] = data2[1];
         bot.sendMessage(chatId2, "Retriving data.....");
 
 
