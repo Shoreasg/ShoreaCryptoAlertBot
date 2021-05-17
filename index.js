@@ -24,10 +24,10 @@ bot.onText(/\/coin (.+)/, (msg, match) => {
     // tell user received message, retriving data.
     bot.sendMessage(chatId, "Retriving data.....");
 
-    const [CryptoCoin1, CryptoCoin2 = "USDT"] = match[1].split(" ")
+    const [CryptoCoin1, CryptoCoin2 = "USDT"] = match[1].split(" ") // match[1] can be single token (i.e. "BTC") or pair ("ETH BTC") If BTC, then
 
     binanceClient
-        .avgPrice({ symbol: `${CryptoCoin1}${CryptoCoin2}` }) // example, { symbol: "BTCUSTD" }
+        .avgPrice({ symbol: `${CryptoCoin1}${CryptoCoin2}`.toUpperCase }) // example, { symbol: "BTCUSTD" }
         .then((avgPrice) => {
             bot.sendMessage(chatId, `The Price for ${CryptoCoin1}${CryptoCoin2}: ${formatMoney(avgPrice['price'])}`);
         })
