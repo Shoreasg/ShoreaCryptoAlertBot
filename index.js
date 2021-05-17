@@ -22,7 +22,7 @@ bot.onText(/\/coin (.+)/, (msg1,data1) => {
     const chatId1 = msg1.chat.id;
     const [CryptoCoin1] = data1
 
-    console.log(data1[2])
+    console.log(data1[1])
     // tell user received message, retriving data.
     bot.sendMessage(chatId1, "Please enter the pair that you would like to pair with.");
 
