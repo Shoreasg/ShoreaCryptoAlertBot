@@ -4,7 +4,7 @@
     "url": "https://github.com/Shoreasg/ShoreaCryptoAlertBot/issues"
   },
   "dependencies": {
-    "binance-api-node": "^0.10.43",
+    "binance-api-node": "^0.12.1",
     "dotenv": "^9.0.2",
     "node-telegram-bot-api": "^0.53.0"
   },
